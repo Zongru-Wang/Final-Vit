@@ -61,8 +61,16 @@ The model will use 80% data from ./Traning-combined-Images for training and 20% 
 8. A .h5 file and a .onnx file will be created after the training process, there is a section in Ultra-eval.ipynb that allow you to load the model through .h5 file and select PRPDs for classification.  I have also make a simple  .NET project that loead the .onnex file and have a UI to let user use it. 
 ![alt text](image-1.png)
 
-9. The project is a simplified demo, the data is provided by "GLOBAL(Shanghai)Technology Co. Ltd" refer as "the company"
-10. This repo is based on a reasearch will be published to IEEE. and I am the author.
-11. The company will use model weight in software and online applications for users.
-12. This repo can be set into private repo at anytime.
+# Model performance
+	Discharge type	Number of defects in Training set	Number of defects in Testing set	Precision on Testing Set(%)	Sample Accuracy on Testing Set(%) 
+
+ ![Model performance for Single-source PRPD classification](https://github.com/user-attachments/assets/19d7f0c6-ae34-4b55-8ef2-19850da28ca6)
+
+![Model performance for Multi-source PRPD classification](https://github.com/user-attachments/assets/1d3f2dc4-867b-4149-ba30-c43140439c95)
+
+
+10. The project is a simplified demo, the data is provided by "GLOBAL(Shanghai)Technology Co. Ltd" refer as "the company"
+11. This repo is based on a reasearch will be published to IEEE. and I am the author.
+12. The company will use model weight in software and online applications for users.
+13. This repo can be set into private repo at anytime.
    
