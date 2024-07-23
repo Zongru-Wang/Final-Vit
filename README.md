@@ -61,8 +61,8 @@ The model will use 80% data from ./Traning-combined-Images for training and 20% 
 8. A .h5 file and a .onnx file will be created after the training process, there is a section in Ultra-eval.ipynb that allow you to load the model through .h5 file and select PRPDs for classification.  I have also make a simple  .NET project that loead the .onnex file and have a UI to let user use it. 
 ![alt text](image-1.png)
 
-9.  a.The project is a simplified demo, the data is provided by "GLOBAL(Shanghai)Technology Co. Ltd", 
-    b.This repo is based on a reasearch will be published to IEEE. and I am the author. 
-    c.We will use model weight in our software and online applications for our users.
-    d. This repo can be set into private repo at anytime.
+9. The project is a simplified demo, the data is provided by "GLOBAL(Shanghai)Technology Co. Ltd" refer as "the company"
+10. This repo is based on a reasearch will be published to IEEE. and I am the author.
+11. The company will use model weight in software and online applications for users.
+12. This repo can be set into private repo at anytime.
    
