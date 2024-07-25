@@ -49,16 +49,19 @@ The model will use 80% data from ./Traning-combined-Images for training and 20% 
 
 3. ![A work flow of my model](image.png)
 
-4. Visualization-2 folder contains the outputs of each layer of the model, the idea is to give you a better understanding how this model structure use pre-trained model to extract features and enhance this features. 
+4. Visualization-2 folder contains the outputs of each layer of the model, the idea is to give you a better understanding how this model structure use pre-trained model to extract features and enhance this features.
+![image](https://github.com/user-attachments/assets/98d16e29-895d-46ae-a34b-a7f812793e38)
+![image](https://github.com/user-attachments/assets/f9ec93ec-a5bd-429d-a75a-bf94f70ca113)
 
-5. Use ultra-with-visdual.py to train this model, the ultra-with-visdual-4*3072.py is a more complex model that combining the features of CNN into the training. 
 
-6. The pre-trained model is too big to uploead, I download it from (https://huggingface.co/models?search=google/vit), 
+6. Use ultra-with-visdual.py to train this model, the ultra-with-visdual-4*3072.py is a more complex model that combining the features of CNN into the training. 
+
+7. The pre-trained model is too big to uploead, I download it from (https://huggingface.co/models?search=google/vit), 
  use model = ViTModel.from_pretrained('google/vit-base-patch16-224-in21k') rather than model = ViTModel.from_pretrained('./vit-base-patch16-224-in21k') in this repo
 
-7. This device has a AMD graphic card, so I use directml to acc the traning process, another example will use Nvdia with Cuda cores.
+8. This device has a AMD graphic card, so I use directml to acc the traning process, another example will use Nvdia with Cuda cores.
 
-8. A .h5 file and a .onnx file will be created after the training process, there is a section in Ultra-eval.ipynb that allow you to load the model through .h5 file and select PRPDs for classification.  I have also make a simple  .NET project that loead the .onnex file and have a UI to let user use it. 
+9. A .h5 file and a .onnx file will be created after the training process, there is a section in Ultra-eval.ipynb that allow you to load the model through .h5 file and select PRPDs for classification.  I have also make a simple  .NET project that loead the .onnex file and have a UI to let user use it. 
   ![Screen shoot of a demo .NET application in c#](image-1.png)
 
  ![Model performance for Single-source PRPD classification](https://github.com/user-attachments/assets/19d7f0c6-ae34-4b55-8ef2-19850da28ca6)
