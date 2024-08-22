@@ -35,7 +35,7 @@ Benefits of PRPD Patterns:
 Diagnostic Insight: PRPD patterns help identify the type, location, and severity of insulation defects.
 Condition Monitoring: Regular monitoring of PRPD patterns allows for early detection of potential insulation failures, facilitating proactive maintenance.
 Improved Reliability: By addressing insulation issues early, PRPD patterns contribute to the overall reliability and longevity of high-voltage electrical equipment.
-#  Project Description
+
 1. The Testing and Training folder is the PRPD pattern from real substations and Labs in GIS, single means the PRPD has only one type of PD source
 2. The Mixture-image-maker.py is a script that combining the single source PDs into multi-source PDs. (Identifying the type of partial discharge (PD) is crucial for the stable operation of gas-insulated switchgear (GIS). Different types of PD can cause varying degrees of damage to the insulation. Correct identification helps in evaluating the insulation status and ensures timely and targeted maintenance actions to prevent failures and prolong equipment life). It applies random horizental shifts 
 to simulate the Phase Shift(I recommend use GANs in real world application, but here is the demo project, which is show a pipeline/work flow that how the Hybrid model works). I have conduct experiments that proves we can simulate Multi-source PDs by combining Single-source PDs, this study will be published soon or later.
@@ -49,20 +49,28 @@ The model will use 80% data from ./Traning-combined-Images for training and 20% 
 
 3. ![A work flow of my model](image.jpg)
 
-4. Visualization-2 folder contains the outputs of each layer of the model, the idea is to give you a better understanding how this model structure use pre-trained model to extract features and enhance this features. 
+4. Visualization-2 folder contains the outputs of each layer of the model, the idea is to give you a better understanding how this model structure use pre-trained model to extract features and enhance this features.
+![image](https://github.com/user-attachments/assets/98d16e29-895d-46ae-a34b-a7f812793e38)
+![image](https://github.com/user-attachments/assets/f9ec93ec-a5bd-429d-a75a-bf94f70ca113)
 
-5. Use ultra-with-visdual.py to train this model, the ultra-with-visdual-4*3072.py is a more complex model that combining the features of CNN into the training. 
 
-6. The pre-trained model is too big to uploead, I download it from (https://huggingface.co/models?search=google/vit), 
+6. Use ultra-with-visdual.py to train this model, the ultra-with-visdual-4*3072.py is a more complex model that combining the features of CNN into the training. 
+
+7. The pre-trained model is too big to uploead, I download it from (https://huggingface.co/models?search=google/vit), 
  use model = ViTModel.from_pretrained('google/vit-base-patch16-224-in21k') rather than model = ViTModel.from_pretrained('./vit-base-patch16-224-in21k') in this repo
 
-7. This device has a AMD graphic card, so I use directml to acc the traning process, another example will use Nvdia with Cuda cores.
+8. This device has a AMD graphic card, so I use directml to acc the traning process, another example will use Nvdia with Cuda cores.
 
 8. A .h5 file and a .onnx file will be created after the training process, there is a section in Ultra-eval.ipynb that allow you to load the model through .h5 file and select PRPDs for classification.  I have also make a simple  .NET project that loead the .onnex file and have a UI to let user use it. 
-![A screen shot of the .NET project](image-1.jpg)
+![alt text](image-1.png)
 
-9.  a.The project is a simplified demo, the data is provided by "GLOBAL(Shanghai)Technology Co. Ltd", 
-    b.This repo is based on a reasearch will be published to IEEE. and I am the author. 
-    c.We will use model weight in our software and online applications for our users.
-    d. This repo can be set into private repo at anytime.
+ ![Model performance for Single-source PRPD classification](https://github.com/user-attachments/assets/19d7f0c6-ae34-4b55-8ef2-19850da28ca6)
+
+![Model performance for Multi-source PRPD classification](https://github.com/user-attachments/assets/1d3f2dc4-867b-4149-ba30-c43140439c95)
+
+
+10. The project is a simplified demo, the data is provided by "GLOBAL(Shanghai)Technology Co. Ltd" refer as "the company"
+11. This repo is based on a reasearch will be published to IEEE. and I am the author.
+12. The company will use model weight in software and online applications for users.
+13. This repo can be set into private repo at anytime.
    
