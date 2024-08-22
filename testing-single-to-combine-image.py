@@ -4,9 +4,14 @@ import numpy as np
 from PIL import Image
 import itertools
 
+#################################################
+# 这个脚本的存在是为了将  256*256的图片的但局放的PRPD图像组合成多标签的PRPD图像
+# 输出的图像可以放在Traning 和testing 文件夹中用于训练和验证
+
+################################################
 # 设置基本目录路径
-single_image_dir = r"C:\Users\GLB\Desktop\Transformer\Testing-single-image"
-combined_image_dir = r"C:\Users\GLB\Desktop\Transformer\Testing-combined-Images"
+single_image_dir = r"Testing-single-image"
+combined_image_dir = r"Testing-combined-Images"
 
 # 标签映射
 label_mapping = {

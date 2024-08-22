@@ -20,7 +20,20 @@ import random
 import os
 import shutil
 
+###############################
+# 打开conda promot 输入 
+# conda env list 查看所有环境
 
+# 使用 conda activate 环境名 进入环境
+# 使用 conda deactivate 退出环境
+# 使用 conda remove -n 环境名 --all 删除环境
+
+
+# 使用 conda activate directml-AMD 激活环境，该环境的备份已经保存在桌面上
+# 激活后 进入从 conda promot 的commandline 中进入这个文件夹
+# 使用 python ultra-with-visdual.py 运行这个训练模型训练脚本
+
+###############################
 # 配置GPU
 
 physical_devices = tf.config.list_physical_devices('GPU')
@@ -347,6 +360,8 @@ if os.path.exists(log_dir):
     shutil.rmtree(log_dir)  # 清除旧日志
 os.makedirs(log_dir)
 tensorboard_callback = TensorBoard(log_dir=log_dir, histogram_freq=1)
+
+
 class_names = ['Corona', 'Floating Potential', 'Free Particle', 'Insulation']
 callbacks = [
     tf.keras.callbacks.ModelCheckpoint(
@@ -411,6 +426,10 @@ print("Checking data generator...")
 # 测试生成一个批次的数据
 
 num_epochs = 100
+
+target_shape = (256, 256)
+
+
 for epoch in range(num_epochs):
     print(f"Starting epoch {epoch + 1}/{num_epochs}")
     # Create the directory for this epoch
@@ -422,7 +441,8 @@ for epoch in range(num_epochs):
     model.fit(
         train_gen,
         steps_per_epoch=train_steps,
-        epochs=1,  # Set to 1 because we're looping manually over epochs
+        epochs=epoch + 1,  # Increment epoch number
+        initial_epoch=epoch,  # Set initial epoch to resume from
         validation_data=val_gen,
         validation_steps=val_steps,
         callbacks=callbacks

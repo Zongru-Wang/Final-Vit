@@ -17,6 +17,27 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import random
 
+#########################################
+# 这是一个实验性脚本，本质和之前的脚本一样，只是在模型的构建上进行了一些调整
+# 1. 使用了更大的 Transformer 模型
+# 2. 添加了 CNN 模块
+# 3. 使用了更大的全连接层
+# 4. 使用了更大的学习率
+# 5. 使用了更大的 batch size
+# 6. 使用了更大的权重衰减
+# 7. 使用了更大的 Transformer Blocks
+# 8. 使用了更大的 Transformer Block 大小
+# 9. 使用了更大的 Transformer Block 的全连接层
+
+# 同时通过 transformer block 和 CNN 模块的组合，可以更好地捕获图像的空间信息和全局信息
+# 目前来看普通的CNN卷积无法快速拟合，未来应考虑使用 GLU 模块
+# 同时也是为了在论文中展示CNN和ViT的 效果的区别。
+# 多数情况下该代码没用
+
+#############################################
+
+
+
 # 配置GPU
 physical_devices = tf.config.list_physical_devices('GPU')
 if physical_devices:
@@ -493,7 +514,8 @@ for epoch in range(num_epochs):
     model.fit(
         train_gen,
         steps_per_epoch=train_steps,
-        epochs=1,  # Set to 1 because we're looping manually over epochs
+        epochs=epoch + 1,  # Increment epoch number
+        initial_epoch=epoch,  # Set initial epoch to resume from
         validation_data=val_gen,
         validation_steps=val_steps,
         callbacks=callbacks

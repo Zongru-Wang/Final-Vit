@@ -13,6 +13,12 @@ import collections
 from transformers import TFAutoModel
 from tensorflow.keras.callbacks import TensorBoard
 
+
+#################################################
+# 这个脚本的存在是为了将 dat文件中读取的 PRPD的 csv文件转换为 256*256的图片
+
+
+################################################
 # 配置GPU
 physical_devices = tf.config.list_physical_devices('GPU')
 if physical_devices:
@@ -29,8 +35,8 @@ label_mapping = {
 }
 
 # 设置基本目录路径
-output_base_dir = r"C:\Users\GLB\Desktop\Final-Vit\Training-combined-Images"
-image_output_dir = r"C:\Users\GLB\Desktop\Final-Vit\Training-single-image"
+output_base_dir = r"Raw2D-SinglePRPD-CSV"
+image_output_dir = r"Raw2D-CSV-to-Images"
 
 # 获取所有组合文件的路径
 def get_combined_files(output_base_dir, graph_type):
@@ -43,6 +49,7 @@ def get_combined_files(output_base_dir, graph_type):
 
 # 读取CSV文件并转换为二维数组
 def load_csv_to_array(file_path):
+    print("Loading file: ", file_path)
     data = pd.read_csv(file_path, header=None).values
     return data
 
